@@ -27,6 +27,14 @@
             android:name="com.example.carlypso.EnterVinActivity"
             android:label="@string/title_activity_enter_vin" >
         </activity>
+        <activity
+            android:name="com.example.carlypso.DescriptionActivity"
+            android:label="@string/title_activity_description" >
+        </activity>
+        <activity
+            android:name="com.example.carlypso.ExtShotActivity"
+            android:label="@string/title_activity_ext_shot" >
+        </activity>
     </application>
 
 </manifest>

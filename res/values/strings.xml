@@ -7,5 +7,10 @@
     <string name="string1">Call 650 249 4804 \n For Questions</string>
     <string name="string2">Please enter the car’s \nVIN number here</string>
     <string name="title_activity_enter_vin">EnterVinActivity</string>
-
+    <string name="string3">Please Plug-In OBD Device</string>
+    <string name="string4">Please Ensure That Nothing Obstructs Sight On the Photos You’re about to take</string>
+    <string name="string5">Keep the car between the lines on the screen</string>
+    <string name="title_activity_description">DescriptionActivity</string>
+    <string name="title_activity_ext_shot">ExtShotActivity</string>
+	<string name="string6">Exterior Body Shots</string>
 </resources>

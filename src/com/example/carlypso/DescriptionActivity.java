@@ -1,34 +1,30 @@
 package com.example.carlypso;
 
+import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class EnterVinActivity extends Activity {
+public class DescriptionActivity extends Activity {
 	private ImageView imageViewBack, imageViewNext;
-	private EditText insert;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_enter_vin);
+		setContentView(R.layout.activity_description);
 		getIntent();
 		imageViewBack = (ImageView)findViewById(R.id.imageView1);
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
-		insert = (EditText)findViewById(R.id.edit);		
-		//Assign onClick to back button
+		
 		imageViewBack.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(),MainActivity.class));
+				startActivity(new Intent(getApplicationContext(),EnterVinActivity.class));
 			}
 		});
 		//Assign onClick to back button
@@ -37,16 +33,15 @@ public class EnterVinActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//startActivity(new Intent(getApplicationContext(),MainActivity.class));
+				startActivity(new Intent(getApplicationContext(),ExtShotActivity.class));
 			}
 		});
-		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_enter_vin, menu);
+		getMenuInflater().inflate(R.menu.activity_description, menu);
 		return true;
 	}
 
