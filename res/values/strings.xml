@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CarLypso</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="string1">Call 650 249 4804 \n For Questions</string>
+    <string name="string2">Please enter the car’s \nVIN number here</string>
+    <string name="title_activity_enter_vin">EnterVinActivity</string>
+
+</resources>
