@@ -25,15 +25,23 @@
         </activity>
         <activity
             android:name="com.example.carlypso.EnterVinActivity"
-            android:label="@string/title_activity_enter_vin" >
+            android:label="@string/title_activity_enter_vin"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.example.carlypso.DescriptionActivity"
-            android:label="@string/title_activity_description" >
+            android:label="@string/title_activity_description"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.example.carlypso.ExtShotActivity"
-            android:label="@string/title_activity_ext_shot" >
+            android:label="@string/title_activity_ext_shot"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.carlypso.Camera"
+            android:label="@string/title_activity_camera"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 
