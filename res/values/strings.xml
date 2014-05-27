@@ -15,6 +15,10 @@
 	<string name="string6">Exterior Body Shots</string>
 	<string name="string7">Exterior Close-Ups</string>
 	<string name="string8">Mechanical Close-Ups</string>
+	<string name="string9">Interior Close-Ups</string>
+	<string name="string10">Accessories</string>
+	
+	
 	
 	<string name="description1">> Turn wheels to the left</string>
 	<string name="description2">> Turn wheels straight</string>
@@ -24,8 +28,8 @@
 	<string name="description7">> Side view mirror detail shot</string>
 	<string name="description8">> Detailed driver door-handle shot</string>
 	<string name="description9">> Empty the trunk</string>
-	
 	<string name="description10">> Driver side front wheel</string>
+	
 	<string name="description11">> Driver side rear wheel</string>
 	<string name="description12">> Passenger side front wheel</string>
 	<string name="description13">> Passenger side rear wheel</string>
@@ -36,5 +40,33 @@
 	<string name="description18">>  Oil dip stick close-up</string>
 	<string name="description19">> Tire tread view (lowest)</string>
 	<string name="description20">> Front brake pad view</string>
+	
+	<string name="description21">> Driver side interior shot (standing),\n other doors closed</string>
+	<string name="description22">> Driver side interior shot (kneeling),\n other doors closed</string>
+	<string name="description23">> Driver side front seat view,\n other doors closed</string>
+	<string name="description24">> Passenger side interior shot (kneeling),\n other doors closed</string>
+	<string name="description25">> Driver side rear interior shot (kneeling),\n other doors closed</string>
+	<string name="description26">> Driver side rear seat view,\n other doors closed</string>
+	<string name="description27">> Passenger side rear interior shot (kneeling),\n other doors closed</string>
+	<string name="description28">> Front driver side door panel</string>
+	<string name="description29">> Rear driver side door panel</string>
+	<string name="description30">> Front passenger side door panel</string>
+	<string name="description31">> Rear passenger side door panel</string>
+	
+	<string name="description32">> Steering wheel close-up</string>
+	<string name="description33">> Dashboard view (from back seat)</string>
+	<string name="description34">> (Sun)roof view (from back seat) </string>
+	<string name="description35">> Center console close-up</string>
+	<string name="description36">> Shift stick close-up </string>
+	<string name="description37">> Power seat or notable accessory close-up </string>
+	<string name="description38">> Speedometer / odometer close-up</string>
+	<string name="description39">> Owner’s manual and key</string>
+	<string name="description40">> Vehicle flaw (dent, ding, scratch, rip) [1 / 3]</string>
+	
+	<string name="description41">> Vehicle flaw (dent, ding, scratch, rip) [2 / 3]</string>
+	<string name="description42">> Vehicle flaw (dent, ding, scratch, rip) [3 / 3] </string>
+	<string name="description43">> </string>
+	<string name="description44">></string>
+	<string name="description45">> </string>
 	
 </resources>
