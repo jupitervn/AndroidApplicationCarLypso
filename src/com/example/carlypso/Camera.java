@@ -5,38 +5,41 @@ import java.io.IOException;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 public class Camera extends Activity {
 	private ImageView imageViewBack, imageViewNext;
 	private ImageView retakeButton, captureButton;
 	private Bitmap bitmap;
+	private FrameLayout layout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_camera);
+		setContentView(R.layout.activity_camera);
 		
-		requestWindowFeature(Window.FEATURE_NO_TITLE); 
+		//requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		getIntent();
-        
 		Preview mPreview = new Preview(this); 
         DrawOnTop mDraw = new DrawOnTop(this); 
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
-        setContentView(mPreview); 
-        addContentView(mDraw, new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-		/**
+        
+        layout = (FrameLayout)findViewById(R.id.layout);
+        layout.addView(mPreview);
+        layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+      
+		
 		imageViewBack = (ImageView)findViewById(R.id.imageView1);
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
 		captureButton = (ImageView)findViewById(R.id.imageView3);
@@ -59,7 +62,7 @@ public class Camera extends Activity {
 				//startActivity(new Intent(getApplicationContext(),ExtShotActivity.class));
 			}
 		});
-		*/
+		
 	}
 
 	@Override
@@ -77,12 +80,10 @@ public class Camera extends Activity {
 
     @Override 
     protected void onDraw(Canvas canvas) { 
-        Paint paint = new Paint(); 
-        paint.setStyle(Paint.Style.STROKE); 
-        paint.setColor(Color.BLACK); 
-        canvas.drawText("Test Text", 10, 10, paint); 
-        canvas.drawBitmap(bitmap, 0, 0, null);
-        super.onDraw(canvas); 
+    	 if (bitmap != null) {
+  		   canvas.drawBitmap(bitmap, 0, 0, null);
+  	   }
+         super.onDraw(canvas);  
     	} 
 	} 
 	
