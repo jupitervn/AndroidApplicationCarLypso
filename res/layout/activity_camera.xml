@@ -43,13 +43,8 @@
         android:layout_alignBottom="@+id/imageView4"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="14dp"
-<<<<<<< HEAD
-        android:text="@string/description10"
+        android:text="@string/description1"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
-=======
-        android:text="@string/description1"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
->>>>>>> bdd863dd9646003d070b7e11bcce2f28787e0813
 
 </RelativeLayout>
