@@ -15,7 +15,8 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
         public static final int insert_box=0x7f020002;
         public static final int logo=0x7f020003;
-        public static final int next=0x7f020004;
+        public static final int logo_only=0x7f020004;
+        public static final int next=0x7f020005;
     }
     public static final class id {
         public static final int edit=0x7f070005;
@@ -41,6 +42,25 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int description1=0x7f04000e;
+        public static final int description10=0x7f040016;
+        public static final int description11=0x7f040017;
+        public static final int description12=0x7f040018;
+        public static final int description13=0x7f040019;
+        public static final int description14=0x7f04001a;
+        public static final int description15=0x7f04001b;
+        public static final int description16=0x7f04001c;
+        public static final int description17=0x7f04001d;
+        public static final int description18=0x7f04001e;
+        public static final int description19=0x7f04001f;
+        public static final int description2=0x7f04000f;
+        public static final int description20=0x7f040020;
+        public static final int description3=0x7f040010;
+        public static final int description5=0x7f040011;
+        public static final int description6=0x7f040012;
+        public static final int description7=0x7f040013;
+        public static final int description8=0x7f040014;
+        public static final int description9=0x7f040015;
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
         public static final int string1=0x7f040003;
@@ -49,6 +69,8 @@ public final class R {
         public static final int string4=0x7f040007;
         public static final int string5=0x7f040008;
         public static final int string6=0x7f04000b;
+        public static final int string7=0x7f04000c;
+        public static final int string8=0x7f04000d;
         public static final int title_activity_description=0x7f040009;
         public static final int title_activity_enter_vin=0x7f040005;
         public static final int title_activity_ext_shot=0x7f04000a;

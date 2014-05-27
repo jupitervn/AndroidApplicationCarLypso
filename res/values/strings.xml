@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CarLypso</string>
+    <string name="app_name">CARLYPSO</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="string1">Call 650 249 4804 \n For Questions</string>
@@ -13,4 +13,28 @@
     <string name="title_activity_description">DescriptionActivity</string>
     <string name="title_activity_ext_shot">ExtShotActivity</string>
 	<string name="string6">Exterior Body Shots</string>
+	<string name="string7">Exterior Close-Ups</string>
+	<string name="string8">Mechanical Close-Ups</string>
+	
+	<string name="description1">> Turn wheels to the left</string>
+	<string name="description2">> Turn wheels straight</string>
+	<string name="description3">>  Empty the trunk</string>
+	<string name="description5">> Detail badge shot</string>
+	<string name="description6">> Empty the trunk</string>
+	<string name="description7">> Side view mirror detail shot</string>
+	<string name="description8">> Detailed driver door-handle shot</string>
+	<string name="description9">> Empty the trunk</string>
+	
+	<string name="description10">> Driver side front wheel</string>
+	<string name="description11">> Driver side rear wheel</string>
+	<string name="description12">> Passenger side front wheel</string>
+	<string name="description13">> Passenger side rear wheel</string>
+	<string name="description14">> Detailed shot front headlight</string>
+	<string name="description15">> Detailed shot rear tail light</string>
+	<string name="description16">> Engine bay</string>
+	<string name="description17">> Engine close-up</string>
+	<string name="description18">>  Oil dip stick close-up</string>
+	<string name="description19">> Tire tread view (lowest)</string>
+	<string name="description20">> Front brake pad view</string>
+	
 </resources>

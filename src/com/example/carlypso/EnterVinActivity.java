@@ -37,7 +37,7 @@ public class EnterVinActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//startActivity(new Intent(getApplicationContext(),MainActivity.class));
+				startActivity(new Intent(getApplicationContext(),DescriptionActivity.class));
 			}
 		});
 		
