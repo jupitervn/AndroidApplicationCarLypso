@@ -9,7 +9,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.PixelFormat;
+import android.hardware.Camera.Parameters;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,33 +20,40 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ZoomControls;
 
 public class Camera extends Activity {
 	private ImageView imageViewBack, imageViewNext;
 	private ImageView retakeButton, captureButton;
 	private Bitmap bitmap;
 	private FrameLayout layout;
+	private ZoomControls zoomControls;
+	private int maxZoomLevel,currentZoomLevel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camera);
+		//zoomControls = (ZoomControls)findViewById(R.id.zoomControls1);
 		
 		//requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		getIntent();
 		Preview mPreview = new Preview(this); 
         DrawOnTop mDraw = new DrawOnTop(this); 
+        zoomControls = new ZoomControls(this);
+        
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         
         layout = (FrameLayout)findViewById(R.id.layout);
         layout.addView(mPreview);
         layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-      
+        layout.addView(zoomControls, new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 		
 		imageViewBack = (ImageView)findViewById(R.id.imageView1);
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
 		captureButton = (ImageView)findViewById(R.id.imageView3);
 		retakeButton =  (ImageView)findViewById(R.id.imageView4);
+		
 		
 		imageViewBack.setOnClickListener(new OnClickListener() {
 			
@@ -106,6 +116,19 @@ public class Camera extends Activity {
 	public class Preview extends SurfaceView implements SurfaceHolder.Callback { 
         SurfaceHolder mHolder; 
         android.hardware.Camera mCamera;
+        public void zoom()
+        {
+            Parameters params=mCamera.getParameters();
+            params.setZoom(params.getMaxZoom());
+            mCamera.setParameters(params);   
+        }
+
+        public void unzoom()
+        {
+            Parameters params=mCamera.getParameters();
+            params.setZoom(0);
+            mCamera.setParameters(params);
+        }
 
         @SuppressWarnings("deprecation")
 		Preview(Context context) { 
@@ -140,9 +163,39 @@ public class Camera extends Activity {
         public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) { 
             // Now that the size is known, set up the camera parameters and begin 
             // the preview. 
-        	android.hardware.Camera.Parameters parameters = mCamera.getParameters(); 
+        	final android.hardware.Camera.Parameters parameters = mCamera.getParameters(); 
             parameters.setPreviewSize(w, h); 
-            mCamera.setParameters(parameters); 
+            parameters.setPictureFormat(PixelFormat.JPEG);
+            
+            if (parameters.isZoomSupported()) {
+                maxZoomLevel = parameters.getMaxZoom();
+                currentZoomLevel = parameters.getZoom();
+                Log.i("max ZOOM ", "is " + maxZoomLevel);
+                zoomControls.setIsZoomInEnabled(true);
+                zoomControls.setIsZoomOutEnabled(true);
+
+                zoomControls.setOnZoomInClickListener(new OnClickListener(){
+                    public void onClick(View v){
+                        if(currentZoomLevel < maxZoomLevel){
+                            currentZoomLevel++;
+                            //mCamera.startSmoothZoom(currentZoomLevel);
+                            parameters.setZoom(currentZoomLevel);
+                            mCamera.setParameters(parameters);
+                        }
+                    }
+                });
+
+                zoomControls.setOnZoomOutClickListener(new OnClickListener(){
+                    public void onClick(View v){
+                        if(currentZoomLevel > 0){
+                            currentZoomLevel--;
+                            parameters.setZoom(currentZoomLevel);
+                            mCamera.setParameters(parameters);
+                        }
+                    }
+                });    
+            }
+            //mCamera.setParameters(parameters); 
             mCamera.startPreview(); 
        } 
     }
