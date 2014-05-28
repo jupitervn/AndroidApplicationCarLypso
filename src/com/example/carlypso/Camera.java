@@ -38,6 +38,7 @@ public class Camera extends Activity {
 	private Bitmap bitmapTop,bitmapCanvas;
 	private FrameLayout layout;
 	private Preview mPreview;
+	private DrawOnTop mDraw;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +47,12 @@ public class Camera extends Activity {
 		getIntent();
 
         layout = (FrameLayout)findViewById(R.id.layout);
-        bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+        bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
         
 		mPreview = new Preview(this);
+		mDraw = new DrawOnTop(this);
+		
         layout.addView(mPreview);
-        DrawOnTop mDraw = new DrawOnTop(this);
         layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
         
 		
@@ -113,7 +115,11 @@ public class Camera extends Activity {
     @Override 
     protected void onDraw(Canvas canvas) { 
     	 if (bitmapTop != null) {
-  		   canvas.drawBitmap(bitmapTop, 0, 0, null);
+    	   
+  		   //canvas.drawBitmap(bitmapTop, 0, 0, null);
+    		 bitmapTop = getResizedBitmap(bitmapTop, canvas.getHeight(), canvas.getWidth());
+    		 canvas.drawBitmap(bitmapTop, 0, 0, null);
+    		 
   	   }
          super.onDraw(canvas);  
     	} 
@@ -157,7 +163,7 @@ public class Camera extends Activity {
 	            // TODO: Merge the photo
 	            try {
 	                Bitmap bottomImage = BitmapFactory.decodeFile(pictureFile.getAbsolutePath()); //blue
-
+	                System.gc();
 	                bitmapCanvas = Bitmap.createBitmap(bottomImage.getWidth(), bottomImage.getHeight(), Bitmap.Config.ARGB_8888);
 	                Canvas c = new Canvas(bitmapCanvas);
 	                Resources res = getResources();
@@ -171,6 +177,7 @@ public class Camera extends Activity {
 
 	                drawable1.setBounds(0, 0, bottomImage.getWidth(), bottomImage.getHeight());
 	                drawable2.setBounds(0, 0, bottomImage.getWidth(), bottomImage.getHeight());
+	                
 	                drawable1.draw(c);
 	                drawable2.draw(c);
 
@@ -211,25 +218,9 @@ public class Camera extends Activity {
 	public class Preview extends SurfaceView implements SurfaceHolder.Callback { 
         SurfaceHolder mHolder; 
         android.hardware.Camera mCamera;
-        public void zoom()
-        {
-            Parameters params=mCamera.getParameters();
-            params.setZoom(params.getMaxZoom());
-            mCamera.setParameters(params);   
-        }
-
-        public void unzoom()
-        {
-            Parameters params=mCamera.getParameters();
-            params.setZoom(0);
-            mCamera.setParameters(params);
-        }
-
         @SuppressWarnings("deprecation")
 		Preview(Context context) { 
             super(context); 
-            // Install a SurfaceHolder.Callback so we get notified when the 
-            // underlying surface is created and destroyed. 
             mHolder = getHolder(); 
             mHolder.addCallback(this); 
             mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); 
@@ -238,9 +229,9 @@ public class Camera extends Activity {
         public void surfaceCreated(SurfaceHolder holder) { 
             // The Surface has been created, acquire the camera and tell it where 
             // to draw. 
-            mCamera = android.hardware.Camera.open(); 
+        		 mCamera = android.hardware.Camera.open(); 
              try {
-        mCamera.setPreviewDisplay(holder);
+            	 mCamera.setPreviewDisplay(holder);
         } catch (IOException e) {
 
             e.printStackTrace();

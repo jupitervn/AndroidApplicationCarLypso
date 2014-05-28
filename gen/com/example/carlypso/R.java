@@ -13,13 +13,14 @@ public final class R {
     public static final class drawable {
         public static final int back=0x7f020000;
         public static final int capture=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int insert_box=0x7f020003;
-        public static final int logo=0x7f020004;
-        public static final int logo_only=0x7f020005;
-        public static final int next=0x7f020006;
-        public static final int retake=0x7f020007;
-        public static final int round=0x7f020008;
+        public static final int car1=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int insert_box=0x7f020004;
+        public static final int logo=0x7f020005;
+        public static final int logo_only=0x7f020006;
+        public static final int next=0x7f020007;
+        public static final int retake=0x7f020008;
+        public static final int round=0x7f020009;
     }
     public static final class id {
         public static final int edit=0x7f070006;
