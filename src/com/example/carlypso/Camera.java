@@ -62,6 +62,22 @@ public class Camera extends Activity {
 				//startActivity(new Intent(getApplicationContext(),ExtShotActivity.class));
 			}
 		});
+		captureButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		retakeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 
