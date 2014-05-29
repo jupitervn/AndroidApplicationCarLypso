@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		getIntent();
+		MyString.VIN_NUMBER = "";
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
 		imageViewNext.setOnClickListener(new OnClickListener() {
 			
