@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EnterVinActivity extends Activity {
 	private ImageView imageViewBack, imageViewNext;
@@ -37,7 +38,15 @@ public class EnterVinActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(),DescriptionActivity.class));
+				if(insert.getText().toString().equals("")){
+					Toast.makeText(getApplicationContext(), "Please enter VIN number", 
+							Toast.LENGTH_SHORT).show();
+				}
+				else{
+					MyString.VIN_NUMBER = insert.getText().toString();
+					startActivity(new Intent(getApplicationContext(),DescriptionActivity.class));
+				}
+				
 			}
 		});
 		
