@@ -51,8 +51,7 @@ public class Camera extends Activity {
 		setContentView(R.layout.activity_camera); 
 		Intent intent = getIntent();
 		counter = Integer.parseInt(intent.getStringExtra(ExtShotActivity.IMAGE_COUNTER));
-		
-<<<<<<< HEAD
+
 		switch(counter){
 		case 1:
 			pictureDescriptionString = getResources().getString(R.string.description1);
