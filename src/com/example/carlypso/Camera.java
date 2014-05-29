@@ -73,23 +73,23 @@ public class Camera extends Activity {
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 		case 6:
-			pictureDescriptionString = getResources().getString(R.string.description5);
+			pictureDescriptionString = getResources().getString(R.string.description6);
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 		case 7:
-			pictureDescriptionString = getResources().getString(R.string.description5);
+			pictureDescriptionString = getResources().getString(R.string.description7);
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 		case 8:
-			pictureDescriptionString = getResources().getString(R.string.description5);
+			pictureDescriptionString = getResources().getString(R.string.description8);
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 		case 9:
-			pictureDescriptionString = getResources().getString(R.string.description5);
+			pictureDescriptionString = getResources().getString(R.string.description9);
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 		case 10:
-			pictureDescriptionString = getResources().getString(R.string.description5);
+			pictureDescriptionString = getResources().getString(R.string.description10);
 			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 			break;
 			
