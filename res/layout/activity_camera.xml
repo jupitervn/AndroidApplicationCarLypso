@@ -54,7 +54,7 @@
         android:layout_above="@+id/imageView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/imageView4"
         android:orientation="vertical" >
 
     </FrameLayout>

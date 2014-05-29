@@ -20,7 +20,7 @@ public class ExtShotActivity extends Activity {
 		setContentView(R.layout.activity_ext_shot);
 		Intent intent = getIntent();
 		try{
-			counter = Integer.parseInt(intent.getStringExtra(Camera.MY_COUNTER).toString());
+			counter = Integer.parseInt(intent.getStringExtra(CameraView.MY_COUNTER).toString());
 		}
 		catch(NullPointerException e){
 			counter = 0;
@@ -62,7 +62,7 @@ public class ExtShotActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Camera.class);
+				Intent intent = new Intent(getApplicationContext(),CameraView.class);
 				intent.putExtra(IMAGE_COUNTER, Integer.toString(counter));
 				startActivity(intent);
 			}

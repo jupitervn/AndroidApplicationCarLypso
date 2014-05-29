@@ -47,7 +47,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.example.carlypso.Camera"
+            android:name="com.example.carlypso.CameraView"
             android:label="@string/title_activity_camera"
             android:screenOrientation="landscape"
             android:largeHeap="true" >
