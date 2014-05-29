@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 public class ExtShotActivity extends Activity {
 	private ImageView imageViewBack, imageViewNext;
+	public final static String IMAGE_COUNTER = "image.counter";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,8 @@ public class ExtShotActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(),Camera.class));
+				Intent intent = new Intent(getApplicationContext(),Camera.class);
+				intent.putExtra(IMAGE_COUNTER, Integer.toString(1));
 			}
 		});
 	}

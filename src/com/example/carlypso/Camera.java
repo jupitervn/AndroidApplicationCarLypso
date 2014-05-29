@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Camera extends Activity {
@@ -39,15 +40,212 @@ public class Camera extends Activity {
 	private FrameLayout layout;
 	private Preview mPreview;
 	private DrawOnTop mDraw;
+	private int counter;
+	private String pictureDescriptionString = "";
+	private TextView heading;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camera); 
-		getIntent();
+		Intent intent = getIntent();
+		counter = Integer.parseInt(intent.getStringExtra(ExtShotActivity.IMAGE_COUNTER));
+		
+		switch(counter){
+		case 1:
+			pictureDescriptionString = getResources().getString(R.string.description1);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 2:
+			pictureDescriptionString = getResources().getString(R.string.description2);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 3:
+			pictureDescriptionString = getResources().getString(R.string.description3);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 4:
+			pictureDescriptionString = getResources().getString(R.string.description4);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 5:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 6:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 7:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 8:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 9:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 10:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+			
+			
+			
+		case 11:
+			pictureDescriptionString = getResources().getString(R.string.description1);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 12:
+			pictureDescriptionString = getResources().getString(R.string.description2);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 13:
+			pictureDescriptionString = getResources().getString(R.string.description3);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 14:
+			pictureDescriptionString = getResources().getString(R.string.description4);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 15:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 16:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 17:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 18:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 19:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 20:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+			
+			
+		case 21:
+			pictureDescriptionString = getResources().getString(R.string.description1);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 22:
+			pictureDescriptionString = getResources().getString(R.string.description2);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 23:
+			pictureDescriptionString = getResources().getString(R.string.description3);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 24:
+			pictureDescriptionString = getResources().getString(R.string.description4);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 25:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 26:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 27:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 28:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 29:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 30:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+			
+		case 31:
+			pictureDescriptionString = getResources().getString(R.string.description1);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 32:
+			pictureDescriptionString = getResources().getString(R.string.description2);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 33:
+			pictureDescriptionString = getResources().getString(R.string.description3);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 34:
+			pictureDescriptionString = getResources().getString(R.string.description4);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 35:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 36:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 37:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 38:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 39:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 40:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+			
+		case 41:
+			pictureDescriptionString = getResources().getString(R.string.description1);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 42:
+			pictureDescriptionString = getResources().getString(R.string.description2);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 43:
+			pictureDescriptionString = getResources().getString(R.string.description3);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 44:
+			pictureDescriptionString = getResources().getString(R.string.description4);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		case 45:
+			pictureDescriptionString = getResources().getString(R.string.description5);
+			bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+			break;
+		
+		}
 
         layout = (FrameLayout)findViewById(R.id.layout);
-        bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
+        heading = (TextView)findViewById(R.id.textHeading);
+        heading.setText(pictureDescriptionString);
+        
         
 		mPreview = new Preview(this);
 		mDraw = new DrawOnTop(this);
