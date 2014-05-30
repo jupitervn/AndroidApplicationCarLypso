@@ -47,23 +47,17 @@ public class CameraView extends Activity {
 		bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car1);
 
         layout = (FrameLayout)findViewById(R.id.layout);
-        heading = (TextView)findViewById(R.id.textHeading);
-        heading.setText(pictureDescriptionString);
-        
-        /**
-		mPreview = new Preview(this,counter,bitmapTop);
-		mDraw = new DrawOnTop(this,bitmapTop);
-		*/
-        layout.addView(new Preview(this,counter,bitmapTop));
-        layout.addView(new DrawOnTop(this,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-        
-		
-		imageViewBack = (ImageView)findViewById(R.id.imageView1);
+        imageViewBack = (ImageView)findViewById(R.id.imageView1);
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
 		captureButton = (ImageView)findViewById(R.id.imageView3);
 		retakeButton =  (ImageView)findViewById(R.id.imageView4);
-		
-		
+        heading = (TextView)findViewById(R.id.textHeading);
+        
+        heading.setText(pictureDescriptionString);
+        
+        layout.addView(new Preview(this,counter,bitmapTop,captureButton));
+        layout.addView(new DrawOnTop(this,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+        
 		imageViewBack.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -77,22 +71,11 @@ public class CameraView extends Activity {
 					
 			@Override
 			public void onClick(View v) {
-				/**
-				Intent refresh = new Intent(getApplicationContext(), CameraView.class);
-				startActivity(refresh);
-				CameraView.this.finish();
-				*/
-				// TODO Auto-generated method stub
-				//startActivity(new Intent(getApplicationContext(),ExtShotActivity.class));
-				/**
-				mPreview = new Preview(context,counter,bitmapTop);
-				mDraw = new DrawOnTop(context,bitmapTop);
-				*/
 				Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
 				bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car10);
 				layout.removeAllViews();
 				
-				layout.addView(new Preview(context,counter,bitmapTop));
+				layout.addView(new Preview(context,counter,bitmapTop,captureButton));
 		        layout.addView(new DrawOnTop(context,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 				
 				
@@ -112,23 +95,6 @@ public class CameraView extends Activity {
 			        layout.addView(mPreview);
 			        layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 				}*/
-			}
-		});
-		captureButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-			//	mPreview.takePicture();
-				
-			}
-		});
-		retakeButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
 			}
 		});
 		
