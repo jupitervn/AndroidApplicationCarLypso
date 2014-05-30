@@ -1,31 +1,27 @@
 package com.example.carlypso;
 
-import java.io.IOException;
-
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CameraView extends Activity {
 	private ImageView imageViewBack, imageViewNext;
 	private ImageView retakeButton, captureButton;
 	private Bitmap bitmapTop,bitmapCanvas;
 	private FrameLayout layout;
-	private Preview mPreview;
-	private DrawOnTop mDraw;
+	//private Preview mPreview;
+	//private DrawOnTop mDraw;
 	private int counter;
 	private String pictureDescriptionString = "";
 	private TextView heading;
@@ -39,7 +35,12 @@ public class CameraView extends Activity {
 		context = this;
 		
 		Intent intent = getIntent();
+		try{
 		counter = Integer.parseInt(intent.getStringExtra(ExtShotActivity.IMAGE_COUNTER));
+		}
+		catch(NumberFormatException e){
+			counter = 0;
+		}
 		
 		//switchCaseMethod(counter);
 		//Toast.makeText(getApplicationContext(), MyString.VIN_NUMBER, Toast.LENGTH_SHORT).show();
@@ -49,12 +50,12 @@ public class CameraView extends Activity {
         heading = (TextView)findViewById(R.id.textHeading);
         heading.setText(pictureDescriptionString);
         
-        
+        /**
 		mPreview = new Preview(this,counter,bitmapTop);
 		mDraw = new DrawOnTop(this,bitmapTop);
-		
-        layout.addView(mPreview);
-        layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+		*/
+        layout.addView(new Preview(this,counter,bitmapTop));
+        layout.addView(new DrawOnTop(this,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
         
 		
 		imageViewBack = (ImageView)findViewById(R.id.imageView1);
@@ -76,13 +77,26 @@ public class CameraView extends Activity {
 					
 			@Override
 			public void onClick(View v) {
+				/**
+				Intent refresh = new Intent(getApplicationContext(), CameraView.class);
+				startActivity(refresh);
+				CameraView.this.finish();
+				*/
 				// TODO Auto-generated method stub
 				//startActivity(new Intent(getApplicationContext(),ExtShotActivity.class));
-				//mPreview = new Preview(context,counter,bitmapTop);
+				/**
+				mPreview = new Preview(context,counter,bitmapTop);
 				mDraw = new DrawOnTop(context,bitmapTop);
-				//layout.removeAllViewsInLayout();
-				layout.addView(mPreview);
-		        layout.addView(mDraw,new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				*/
+				Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+				bitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.car10);
+				layout.removeAllViews();
+				
+				layout.addView(new Preview(context,counter,bitmapTop));
+		        layout.addView(new DrawOnTop(context,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				
+				
+				
 				/**
 				if(counter == 9 || counter == 18 || counter == 23 || counter == 34){
 					Intent intent = new Intent(getApplicationContext(),ExtShotActivity.class);
@@ -105,7 +119,7 @@ public class CameraView extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				mPreview.takePicture();
+			//	mPreview.takePicture();
 				
 			}
 		});
@@ -126,8 +140,6 @@ public class CameraView extends Activity {
 		getMenuInflater().inflate(R.menu.activity_camera, menu);
 		return true;
 	}
-
-	
 	
 	private void switchCaseMethod(int counter){
 		switch(counter){

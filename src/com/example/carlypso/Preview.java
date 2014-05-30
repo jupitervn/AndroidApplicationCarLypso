@@ -14,7 +14,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
 	private final int counter;
 	private final Context context;
     private final SurfaceHolder mHolder; 
-    private Camera mCamera;
+    private Camera mCamera = null;
     
     @SuppressWarnings("deprecation")
 	Preview(Context context,int counter,Bitmap bitmap) { 
@@ -47,17 +47,21 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
        mCamera.release();
        mCamera = null;
     } 
+   
+    /**
     public void takePicture() {
  	   mCamera.takePicture(null, null, new PhotoHandler(context,counter,bitmapTop));
- 	   //mCamera = null;
+ 	   //mCamera.release();
     }
-
+    
+*/
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) { 
         // Now that the size is known, set up the camera parameters and begin 
         // the preview. 
     	android.hardware.Camera.Parameters parameters = mCamera.getParameters(); 
         parameters.setPreviewSize(w, h); 
         parameters.setPictureFormat(PixelFormat.JPEG);
+        mCamera.setParameters(parameters);
         mCamera.startPreview();
    } 
     
