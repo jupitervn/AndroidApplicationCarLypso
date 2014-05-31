@@ -19,8 +19,6 @@ public class CameraView extends Activity {
 	private ImageView retakeButton, captureButton;
 	private Bitmap bitmapTop,bitmapCanvas;
 	private FrameLayout layout;
-	//private Preview mPreview;
-	//private DrawOnTop mDraw;
 	private int counter;
 	private String pictureDescriptionString = "";
 	private TextView heading;
@@ -100,6 +98,9 @@ public class CameraView extends Activity {
 					Intent intent = new Intent(getApplicationContext(),ExtShotActivity.class);
 					intent.putExtra(MY_COUNTER, Integer.toString(counter));
 					startActivity(intent);
+				}
+				else if(counter == 1){ //Change to 45 later
+					startActivity(new Intent(getApplicationContext(),UploadActivity.class));
 				}
 				else{
 				counter++;								//The counter is increased to go to the next silluate
