@@ -56,7 +56,14 @@ public class ExtShotActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(),DescriptionActivity.class));
+				if(counter == 10 || counter == 19 || counter == 24 || counter == 35 ){
+					counter = counter-2;
+					Intent intent = new Intent(getApplicationContext(),CameraView.class);
+					intent.putExtra(IMAGE_COUNTER, Integer.toString(counter));
+					startActivity(intent);
+				}
+				else
+					startActivity(new Intent(getApplicationContext(),DescriptionActivity.class));
 			}
 		});
 		//Assign onClick to back button

@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.os.AsyncTask;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -51,14 +52,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
        mCamera = null;
     } 
    
-   
-    private void takePicture() {
- 	   mCamera.takePicture(null, null, new PhotoHandler(context,counter,bitmapTop));
- 	   //mCamera.release();
-    }
-    
-   
-
+  
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) { 
         // Now that the size is known, set up the camera parameters and begin 
         // the preview. 
@@ -87,10 +81,21 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				//Toast.makeText(context, "hello" , Toast.LENGTH_SHORT).show();
-				takePicture();
+				new MyTakePictureAsnc().execute();
 				
 			}
 		});
+    }
+    private class MyTakePictureAsnc extends AsyncTask<String, String, String>{
+    	
+
+		@Override
+		protected String doInBackground(String... params) {
+			mCamera.takePicture(null, null, new PhotoHandler(context,counter,bitmapTop));
+			// TODO Auto-generated method stub
+			return null;
+		}
+    	
     }
     
     
