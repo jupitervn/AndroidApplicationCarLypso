@@ -99,7 +99,7 @@ public class CameraView extends Activity {
 					intent.putExtra(MY_COUNTER, Integer.toString(counter));
 					startActivity(intent);
 				}
-				else if(counter == 1){ //Change to 45 later
+				else if(counter == 45){ //Change to 45 later
 					startActivity(new Intent(getApplicationContext(),UploadActivity.class));
 				}
 				else{

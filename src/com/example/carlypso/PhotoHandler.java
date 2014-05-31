@@ -34,7 +34,6 @@ public class PhotoHandler implements PictureCallback {
     @Override
     public void onPictureTaken(byte[] data,Camera camera) {
         File sdDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-
         File pictureFileDir =  new File(sdDir, "/CameraAPIDemo");
 
         if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {
@@ -44,7 +43,6 @@ public class PhotoHandler implements PictureCallback {
         }
 
         String photoFile = MyString.VIN_NUMBER +"_"+ Integer.toString(counter) + ".jpg";
-
         String filename = pictureFileDir.getPath() + File.separator + photoFile;
 
         File pictureFile = new File(filename);
@@ -54,6 +52,7 @@ public class PhotoHandler implements PictureCallback {
             fos.write(data);
             fos.close();
             Toast.makeText(context, "New Image saved:" + photoFile,Toast.LENGTH_LONG).show();
+            MyString.photoName.add(photoFile);
             
             // TODO: Merge the photo
             try {

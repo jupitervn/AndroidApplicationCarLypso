@@ -1,9 +1,15 @@
 package com.example.carlypso;
 
+import java.io.File;
+
+import org.apache.commons.net.ftp.FTPClient;
+
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,14 +18,25 @@ import android.widget.Toast;
 
 public class UploadActivity extends Activity {
 	private Button buttonUpload;
-	private MyFTPClient client;
+	private MyFTPClient client = new MyFTPClient();
 	private String str;
+	private String srcFilePath;
+	private File pictureFileDir,sdDir;
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_upload);
+		context = this;
 		getIntent();
+		
+		sdDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+       // pictureFileDir =  new File(sdDir, "/CameraAPIDemo");
+       // srcFilePath = pictureFileDir.getPath();
+		
+        
+        
 		buttonUpload = (Button)findViewById(R.id.button1);
 		buttonUpload.setBackgroundColor(Color.GREEN);
 		buttonUpload.setOnClickListener(new OnClickListener() {
@@ -27,7 +44,7 @@ public class UploadActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				new UploadToFTP().execute();
+				//new UploadToFTP().execute();
 				
 			}
 		});
@@ -44,8 +61,6 @@ public class UploadActivity extends Activity {
 	
 	
 	private class UploadToFTP extends AsyncTask<String, String, String>{
-		
-    	
 
 		@Override
 		protected void onPostExecute(String result) {
@@ -56,16 +71,33 @@ public class UploadActivity extends Activity {
 
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			//connnectingwithFTP("178.63.0.66", "photos", "CaRlYpSo");
 			
-			//connnectingwithFTP("appsoidtester.comli.com", "a6422541", "irishhngf12345");
+			String ftpDirectoryName = "";
+			// TODO Auto-generated method stub
+			
 			if(client.ftpConnect(MyString.HOST_NAME, MyString.USER_NAME, MyString.PASSWORD, MyString.PORT)){
-				str = client.ftpGetCurrentWorkingDirectory();
+				if(client.ftpMakeDirectory(MyString.VIN_NUMBER)){
+					client.ftpChangeDirectory(MyString.VIN_NUMBER);
+					ftpDirectoryName = client.ftpGetCurrentWorkingDirectory();
+					
+					for(int i=0;i<MyString.photoName.size();i++){
+						//pictureFileDir =  new File("file://mnt/"+sdDir.getPath()+"/CameraAPIDemo/"+MyString.photoName.get(i).toString());
+						//File f = new File(context.getFilesDir().getAbsolutePath()+"/CameraAPIDemo/"+MyString.photoName.get(i).toString());
+						File f = new File(sdDir.getPath()+File.separator+"CameraAPIDemo/",MyString.photoName.get(i).toString());
+						if(client.ftpUpload(f.getPath(),
+								MyString.photoName.get(i).toString(),ftpDirectoryName,context)){
+							
+							Toast.makeText(context, MyString.photoName.get(i).toString()+" uploaded ", Toast.LENGTH_SHORT).show();
+						}
+					}
+				}
+				
 			}
 			return null;
 		}
     	
     }
+	
+	
 
 }
