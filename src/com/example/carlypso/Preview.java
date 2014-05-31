@@ -73,7 +73,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
 
         // You need to choose the most appropriate previewSize for your app
-        Camera.Size previewSize = previewSizes.get(3);// .... select one of previewSizes here
+        Camera.Size previewSize = previewSizes.get(1);// .... select one of previewSizes here
         
         parameters.setPreviewSize(previewSize.width, previewSize.height);
         mCamera.setParameters(parameters);

@@ -35,6 +35,7 @@ public class CameraView extends Activity {
 		Intent intent = getIntent();
 		try{
 		counter = Integer.parseInt(intent.getStringExtra(ExtShotActivity.IMAGE_COUNTER));
+		counter++;
 		}
 		catch(NumberFormatException e){
 			counter = 1;
@@ -52,6 +53,7 @@ public class CameraView extends Activity {
 		
 		
 		switchCaseMethod(counter);
+		
         layout.addView(new Preview(this,counter,bitmapTop,captureButton));
         layout.addView(new DrawOnTop(this,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
         
@@ -60,6 +62,12 @@ public class CameraView extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				if(counter == 1 || counter == 11 || counter == 20 || counter == 25 || counter == 36){
+					counter--;
+					Intent intent = new Intent(getApplicationContext(),ExtShotActivity.class);
+					intent.putExtra(MY_COUNTER, Integer.toString(counter));
+					startActivity(intent);
+				}
 				counter--;								//The counter is decreased to go to the next silluate
 				switchCaseMethod(counter);				//The value of bitmap image and heading-description is obtained
 				layout.removeAllViews();				//All view are removed from from layout
@@ -87,12 +95,20 @@ public class CameraView extends Activity {
 					
 			@Override
 			public void onClick(View v) {
+				if(counter == 9 || counter == 18 || counter == 23 || counter == 34){
+					counter++;
+					Intent intent = new Intent(getApplicationContext(),ExtShotActivity.class);
+					intent.putExtra(MY_COUNTER, Integer.toString(counter));
+					startActivity(intent);
+				}
+				else{
 				counter++;								//The counter is increased to go to the next silluate
 				switchCaseMethod(counter);				//The value of bitmap image and heading-description is obtained
 				layout.removeAllViews();				//All view are removed from from layout
 				
 				layout.addView(new Preview(context,counter,bitmapTop,captureButton));
 		        layout.addView(new DrawOnTop(context,bitmapTop),new LayoutParams (LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				}
 			}
 		});
 		

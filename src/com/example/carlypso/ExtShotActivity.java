@@ -7,12 +7,14 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ExtShotActivity extends Activity {
 	private ImageView imageViewBack, imageViewNext;
 	public final static String IMAGE_COUNTER = "image.counter";
+	private TextView topHeadingTextView;
 	private String topHeading ;
-	private int counter = 1;
+	private int counter = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +25,12 @@ public class ExtShotActivity extends Activity {
 			counter = Integer.parseInt(intent.getStringExtra(CameraView.MY_COUNTER).toString());
 		}
 		catch(NullPointerException e){
-			counter = 1;
+			counter = 0;
 		}
 		
 		imageViewBack = (ImageView)findViewById(R.id.imageView1);
 		imageViewNext = (ImageView)findViewById(R.id.imageView2);
-		/**
+		topHeadingTextView = (TextView)findViewById(R.id.textView1);
 		switch (counter) {
 		case 0:
 			topHeading = getResources().getString(R.string.string6);
@@ -48,7 +50,7 @@ public class ExtShotActivity extends Activity {
 		default:
 			break;
 		}
-		*/
+		topHeadingTextView.setText(topHeading);
 		imageViewBack.setOnClickListener(new OnClickListener() {
 			
 			@Override
