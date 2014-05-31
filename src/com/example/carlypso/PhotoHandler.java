@@ -43,7 +43,7 @@ public class PhotoHandler implements PictureCallback {
 
         }
 
-        String photoFile = MyString.VIN_NUMBER + Integer.toString(counter) + ".jpg";
+        String photoFile = MyString.VIN_NUMBER +"_"+ Integer.toString(counter) + ".jpg";
 
         String filename = pictureFileDir.getPath() + File.separator + photoFile;
 
@@ -59,7 +59,8 @@ public class PhotoHandler implements PictureCallback {
             try {
                 Bitmap bottomImage = BitmapFactory.decodeFile(pictureFile.getAbsolutePath()); //blue
                 System.gc();
-                bitmapCanvas = Bitmap.createBitmap(bottomImage.getWidth(), bottomImage.getHeight(), Bitmap.Config.ARGB_8888);
+                //bitmapCanvas = Bitmap.createBitmap(bottomImage.getWidth(), bottomImage.getHeight(), Bitmap.Config.ARGB_8888);
+                bitmapCanvas = Bitmap.createBitmap(1600, 1200, Bitmap.Config.ARGB_8888);
                 Canvas c = new Canvas(bitmapCanvas);
                 //Resources res = context.getResources();
 
