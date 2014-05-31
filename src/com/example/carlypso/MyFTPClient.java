@@ -25,12 +25,12 @@ public class MyFTPClient {
 	    try {
 	        mFTPClient = new FTPClient();
 	        // connecting to the host
-	        mFTPClient.connect("appsoidtester.comli.com", 21);
+	        mFTPClient.connect(host, port);
 
 	        // now check the reply code, if positive mean connection success
 	        if (FTPReply.isPositiveCompletion(mFTPClient.getReplyCode())) {
 	            // login using username & password
-	            boolean status = mFTPClient.login("a6422541", "irishhngf12345");
+	            boolean status = mFTPClient.login(username, password);
 
 	            /* Set File Transfer Mode
 	             *
