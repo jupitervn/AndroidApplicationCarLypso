@@ -39,7 +39,7 @@ public class MyFTPClient {
 	             * EBCDIC_FILE_TYPE .etc. Here, I use BINARY_FILE_TYPE
 	             * for transferring text, image, and compressed files.
 	             */
-	            mFTPClient.setFileType(FTP.ASCII_FILE_TYPE);
+                mFTPClient.setFileType(FTP.BINARY_FILE_TYPE);
 	            mFTPClient.enterLocalPassiveMode();
 
 	            return status;
@@ -84,13 +84,14 @@ public class MyFTPClient {
 
 	public boolean ftpChangeDirectory(String directory_path)
 	{
+        boolean result = false;
 	    try {
-	        mFTPClient.changeWorkingDirectory(directory_path);
+            result = mFTPClient.changeWorkingDirectory(directory_path);
 	    } catch(Exception e) {
 	        Log.d(TAG, "Error: could not change directory to " + directory_path);
 	    }
 
-	    return false;
+        return result;
 	} 
 
 	//Method to list all files in a directory:
@@ -210,15 +211,9 @@ public class MyFTPClient {
 	    boolean status = false;
 	    try {
 	       // FileInputStream srcFileStream = new FileInputStream(srcFilePath);
-	        
-	        FileInputStream srcFileStream = context.openFileInput(srcFilePath);
-
-	        // change working directory to the destination directory
-	        //if (ftpChangeDirectory(desDirectory)) {
-	            status = mFTPClient.storeFile(desFileName, srcFileStream);
-	        //}
-
-	        srcFileStream.close();
+            FileInputStream fis = new FileInputStream(srcFilePath);
+            status = mFTPClient.storeFile(desFileName, fis);
+            fis.close();
 	        return status;
 	    } 
 	    catch (Exception e) {

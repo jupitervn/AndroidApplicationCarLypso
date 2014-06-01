@@ -4,43 +4,48 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.hardware.Camera;
 import android.view.View;
 
-public class DrawOnTop extends View { 
-	private Context context;
-	private Bitmap bitmapTop;
-	
-    public DrawOnTop(Context context,Bitmap bitmapTop) { 
+import com.example.carlyso.bitmap.BitmapUtils;
+
+public class DrawOnTop extends View {
+    private Bitmap bitmapTop;
+    private Camera.Size previewSize;
+
+    public DrawOnTop(Context context, Bitmap bitmapTop, Camera.Size previewSize) {
         super(context);
+        this.setBitmapTop(bitmapTop);
+        this.previewSize = previewSize;
+
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (getBitmapTop() != null) {
+            int viewWidth = getMeasuredWidth();
+            int viewHeight = getMeasuredHeight();
+
+            if (viewHeight > 0 && viewWidth > 0) {
+                float scaleWidth = viewWidth / (float) previewSize.width;
+                float scaleHeight = viewHeight / (float) previewSize.height;
+                Matrix matrix = BitmapUtils.getOptimalMatrix(bitmapTop.getWidth(), bitmapTop.getHeight(),
+                        previewSize.width, previewSize.height, true);
+                matrix.postScale(scaleWidth, scaleHeight);
+                canvas.drawBitmap(getBitmapTop(), matrix, null);
+                canvas.save();
+            }
+
+        }
+        super.onDraw(canvas);
+    }
+
+    public Bitmap getBitmapTop() {
+        return bitmapTop;
+    }
+
+    public void setBitmapTop(Bitmap bitmapTop) {
         this.bitmapTop = bitmapTop;
-        
-    } 
-    
+    }
 
-    @Override 
-    protected void onDraw(Canvas canvas) { 
-	 if (bitmapTop != null) {
-	   
-		   //canvas.drawBitmap(bitmapTop, 0, 0, null);
-		 bitmapTop = getResizedBitmap(bitmapTop, canvas.getHeight(), canvas.getWidth());
-		 canvas.drawBitmap(bitmapTop, 0, 0, null);
-		 
-	   }
-     super.onDraw(canvas);  
-	} 
-    
-    private Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
-	    int width = bm.getWidth();
-	    int height = bm.getHeight();
-	    float scaleWidth = ((float) newWidth) / width;
-	    float scaleHeight = ((float) newHeight) / height;
-	    // CREATE A MATRIX FOR THE MANIPULATION
-	    Matrix matrix = new Matrix();
-	    // RESIZE THE BIT MAP
-	    matrix.postScale(scaleWidth, scaleHeight);
-
-	    // "RECREATE" THE NEW BITMAP
-	    Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-	    return resizedBitmap;
-	}
-} 
+}

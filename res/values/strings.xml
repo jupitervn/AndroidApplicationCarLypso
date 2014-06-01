@@ -59,5 +59,15 @@
     <string name="description41">> Vehicle flaw (dent, ding, scratch, rip) [3 / 3] </string>
     <string name="title_activity_camera">Camera</string>
     <string name="title_activity_upload">UploadActivity</string>
+    
+    <!-- Common strings -->
+    <string name="saving_text">Saving&#8230;</string>
+    <string name="cant_save_image">Can\'t save image.</string>
+    <string name="cant_upload_file">Can\'t upload file.</string>
+    <string name="upload_success">Upload successfully</string>
+    <string name="upload_btn_label">UPLOAD</string>
+    <string name="upload_progress">Uploaded %1$s / %2$s</string>
+    <string name="uploading_label">Uploading&#8230;</string>
+    <string name="no_photo_to_upload">There\'s no photo to be uploaded.</string>
 
 </resources>
